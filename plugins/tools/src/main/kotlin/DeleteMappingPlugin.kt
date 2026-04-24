@@ -9,7 +9,7 @@ class DeleteMappingPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.extensions.configure(ApplicationAndroidComponentsExtension::class) {
             onVariants(selector().withBuildType("release")) { variant ->
-                val deleteMappingTaskProvider = target.tasks.register<DeleteMappingTask>("DeleteMappingFor${variant.buildType}Task")
+                val deleteMappingTaskProvider = target.tasks.register<DeleteMappingTask>(variant.computeTaskName("DeleteMappingFor", "Task"))
                 variant.artifacts.use(deleteMappingTaskProvider)
                     .wiredWithFiles(
                         DeleteMappingTask::inputAarFile,

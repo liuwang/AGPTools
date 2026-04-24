@@ -29,6 +29,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    flavorDimensions += "tier"
+    productFlavors {
+        create("free") {
+            applicationIdSuffix = ".free"
+        }
+        create("pro") {
+            applicationIdSuffix = ".pro"
+        }
+    }
     kotlinOptions {
         jvmTarget = "11"
     }
